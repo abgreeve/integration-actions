@@ -1,0 +1,26 @@
+modules:
+  jira:projectSettingsPage:
+    - key: integration-actions-hello-world-project-settings-page
+      resource: main
+      resolver:
+        function: resolver
+      render: native
+      title: integration-actions
+  function:
+    - key: resolver
+      handler: index.handler
+resources:
+  - key: main
+    path: src/frontend/index.jsx
+app:
+  runtime:
+    name: nodejs22.x
+  id: ari:cloud:ecosystem::app/1e3c5b67-7822-4db8-be4a-b1a545c6dedf
+permissions:
+  content:
+    scripts:
+      - unsafe-inline
+  scopes:
+    - read:jira-work
+    - write:jira-work
+    - storage:app
