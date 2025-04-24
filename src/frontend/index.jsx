@@ -12,6 +12,7 @@ const App = () => {
     window.console.log(e);
     let message = e.target.value;
     const response = await invoke('updateRebaseMessage', message);
+    setData(message);
   };
 
   const [data, setData] = useState(null);
@@ -27,7 +28,9 @@ const App = () => {
         async (e) => {
           await saveRebaseMessage(e);
         }
-      } value={data}></TextArea>
+      }></TextArea>
+      <Label labelFor="">Current message</Label>
+      <Text>{data}</Text>
       <Button onClick={async () => {
         await  myTest();
       }}>Send rebase message</Button>

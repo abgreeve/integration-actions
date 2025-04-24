@@ -32,14 +32,14 @@ const getIssues = async () => {
 
 const sendMessage = async (issue) => {
   console.log(issue.id);
-  let rebasemessage = "The main moodle.git repository has just been updated with the latest weekly modifications. You may wish to rebase your PULL branches to simplify history and avoid any possible merge conflicts. This would also make integrator's life easier next week.   TIA and ciao :-)";
+  let rebasemessage = await getKVS();
   var bodyData = `{
     "body": {
       "content": [
         {
           "content": [
             {
-              "text": "${rebasemessage}",
+              "text": "${rebasemessage.payload}",
               "type": "text"
             }
           ],
